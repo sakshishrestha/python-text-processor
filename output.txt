@@ -1,7 +1,7 @@
 Original Text:
-hello world
+this is the new content
 
-Word Count: 2
+Word Count: 5
 
 Uppercase Text:
-HELLO WORLD
+THIS IS THE NEW CONTENT

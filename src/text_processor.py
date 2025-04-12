@@ -45,13 +45,16 @@ def main(input_file="input.txt", output_file="output.txt"):
     """Main function to process a text file."""
     # input_file = input("Enter input file path (default: input.txt): ") or "input.txt"
     # output_file = input("Enter output file path (default: output.txt): ") or "output.txt"
-    parser = argparse.ArgumentParser(description='Process text files')
-    parser.add_argument('--input', default='input.txt', help='Input file path')
-    parser.add_argument('--output', default='output.txt', help='Output file path')
+    """Main function to process a text file."""
+    parser = argparse.ArgumentParser(description="Process a text file.")
+    parser.add_argument("--input-file", default="input.txt", help="Input file path")
+    parser.add_argument("--output-file", default="output.txt", help="Output file path")
+    parser.add_argument("--non-interactive", action="store_true", help="Run without interactive prompts")
+    parser.add_argument("--text", help="Text to process (non-interactive mode)")
     args = parser.parse_args()
-    
-    input_file = args.input
-    output_file = args.output
+
+    input_file = args.input_file
+    output_file = args.output_file
 
     #read existing content or create new file  
     text = read_file(input_file)
@@ -59,12 +62,15 @@ def main(input_file="input.txt", output_file="output.txt"):
         print(f"File '{input_file}' not found. You can create new content.")
         text = ""
     
-    #interactive editing
-    print("\nCurrent content:")
-    print(text if text else "[Empty]")
-    new_text = input("\nEnter new text (or press Enter to keep existing): ")
-    if new_text:
-        text = new_text
+# Interactive editing (only if not non-interactive)
+    if not args.non_interactive:
+        print("\nCurrent content:")
+        print(text if text else "[Empty]")
+        new_text = input("\nEnter new text (or press Enter to keep existing): ")
+        if new_text:
+            text = new_text
+    elif args.text is not None:
+        text = args.text  # Use provided text in non-interactive mode
 
     #save new content to input file
     if text:

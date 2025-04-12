@@ -50,8 +50,9 @@ jobs:
     
     - name: Run application
       run: |
-        python src/text_processor.py --input input.txt --output output.txt
-
+        echo "test content" > input.txt
+        python src/text_processor.py --input-file input.txt --output-file output.txt --non-interactive
+        
     - name: Upload output file
       uses: actions/upload-artifact@v4
       with:
