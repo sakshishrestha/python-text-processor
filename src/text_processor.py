@@ -1,3 +1,5 @@
+import argparse
+
 def read_file(file_path):
     """Read text from a file."""
     try:
@@ -41,8 +43,15 @@ def write_results(results, output_file):
 
 def main(input_file="input.txt", output_file="output.txt"):
     """Main function to process a text file."""
-    input_file = input("Enter input file path (default: input.txt): ") or "input.txt"
-    output_file = input("Enter output file path (default: output.txt): ") or "output.txt"
+    # input_file = input("Enter input file path (default: input.txt): ") or "input.txt"
+    # output_file = input("Enter output file path (default: output.txt): ") or "output.txt"
+    parser = argparse.ArgumentParser(description='Process text files')
+    parser.add_argument('--input', default='input.txt', help='Input file path')
+    parser.add_argument('--output', default='output.txt', help='Output file path')
+    args = parser.parse_args()
+    
+    input_file = args.input
+    output_file = args.output
 
     #read existing content or create new file  
     text = read_file(input_file)
