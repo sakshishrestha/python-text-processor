@@ -62,7 +62,7 @@ def main(input_file="input.txt", output_file="output.txt"):
     #interactive editing
     print("\nCurrent content:")
     print(text if text else "[Empty]")
-    next_text = input("\nEnter new text (or press Enter to keep existing): ")
+    new_text = input("\nEnter new text (or press Enter to keep existing): ")
     if new_text:
         text = new_text
 
