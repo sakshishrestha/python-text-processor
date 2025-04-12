@@ -44,16 +44,7 @@ def main(input_file="input.txt", output_file="output.txt"):
     input_file = input("Enter input file path (default: input.txt): ") or "input.txt"
     output_file = input("Enter output file path (default: output.txt): ") or "output.txt"
 
-    #read existing content or create new file
-    # text = read_file(input_file)
-    # if text:
-    #     results = process_text(text)
-    #     if results:
-    #         success = write_results(results, output_file)
-    #         if success:
-    #             print(f"Processing complete. Results written to {output_file}")
-    #             return True
-    
+    #read existing content or create new file  
     text = read_file(input_file)
     if text is None: 
         print(f"File '{input_file}' not found. You can create new content.")
