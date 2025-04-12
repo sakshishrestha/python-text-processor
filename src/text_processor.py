@@ -41,17 +41,53 @@ def write_results(results, output_file):
 
 def main(input_file="input.txt", output_file="output.txt"):
     """Main function to process a text file."""
-    text = read_file(input_file)
-    if text:
-        results = process_text(text)
-        if results:
-            success = write_results(results, output_file)
-            if success:
-                print(f"Processing complete. Results written to {output_file}")
-                return True
+    input_file = input("Enter input file path (default: input.txt): ") or "input.txt"
+    output_file = input("Enter output file path (default: output.txt): ") or "output.txt"
+
+    #read existing content or create new file
+    # text = read_file(input_file)
+    # if text:
+    #     results = process_text(text)
+    #     if results:
+    #         success = write_results(results, output_file)
+    #         if success:
+    #             print(f"Processing complete. Results written to {output_file}")
+    #             return True
     
-    print("Processing failed.")
-    return False
+    text = read_file(input_file)
+    if text is None: 
+        print(f"File '{input_file}' not found. You can create new content.")
+        text = ""
+    
+    #interactive editing
+    print("\nCurrent content:")
+    print(text if text else "[Empty]")
+    next_text = input("\nEnter new text (or press Enter to keep existing): ")
+    if new_text:
+        text = new_text
+
+    #save new content to input file
+    if text:
+        try:
+            with open(input_file, 'w') as file:
+                file.write(text)
+            print(f"Content saved to {input_file}")
+        except Exception as e:
+            print(f"Error saving to {input_file}: {e}")
+            return False
+    
+
+    #process and write results
+    results = process_text(text)
+    if results and write_results(results, output_file):
+        print(f"Processing complete. Results written to {output_file}")
+        return True
+    else:
+        print("Processing failed.")
+        return False
+    
+    # print("Processing failed.")
+    # return False
 
 if __name__ == "__main__":
     main()
