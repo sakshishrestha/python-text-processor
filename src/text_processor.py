@@ -62,7 +62,7 @@ def main(input_file="input.txt", output_file="output.txt"):
         print(f"File '{input_file}' not found. You can create new content.")
         text = ""
     
-# Interactive editing (only if not non-interactive)
+    # Interactive editing (only if not non-interactive)
     if not args.non_interactive:
         print("\nCurrent content:")
         print(text if text else "[Empty]")
