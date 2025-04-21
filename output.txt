@@ -1,7 +1,7 @@
 Original Text:
-hello
+this is hello
 
-Word Count: 1
+Word Count: 3
 
 Uppercase Text:
-HELLO
+THIS IS HELLO
